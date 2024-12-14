@@ -2,7 +2,7 @@ const connectToMongo = require("./db");
 const express = require('express');
 const cors = require('cors');
 const twilio = require('twilio'); // Import Twilio
-
+require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -14,9 +14,9 @@ app.use(cors());
 connectToMongo();
 
 // Twilio credentials (Replace with your actual credentials)
-const accountSid = '';
-const authToken = '';
-const twilioPhoneNumber = '';
+const accountSid = process.env.accountSid;
+const authToken = process.env.authToken;
+const twilioPhoneNumber = process.env.twilioPhoneNumber;
 
 const client = new twilio(accountSid, authToken);
 
